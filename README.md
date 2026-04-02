@@ -124,8 +124,7 @@ The pipeline runs daily at 06:00 UTC, with automatic retries on failure and emai
 
 ## DAG Configuration
 
-```
->python
+```python
 default_args = {
     "owner": "airflow",
     "retries": 2,
@@ -169,29 +168,25 @@ with DAG(
 - A Gmail account with App Password enabled
 
 ### 1. Clone the repository
-```
-> bash
+```bash
 git clone https://github.com/yourusername/retail-etl-pipeline.git
 cd retail-etl-pipeline
 ```
 
 ### 2. Create and activate a virtual environment
-```
-> bash
+```bash
 python3 -m venv airflow-venv
 source airflow-venv/bin/activate
 ```
 
 ### 3. Install dependencies
-```
-> bash
+```bash
 pip install apache-airflow==2.9.1
 pip install pandas requests "snowflake-connector-python[pandas]"
 ```
 
 ### 4. Initialise Airflow
-```
-> bash
+```bash
 export AIRFLOW_HOME=~/airflow
 airflow db init
 airflow users create \
@@ -201,8 +196,7 @@ airflow users create \
 ```
 
 ### 5. Set Airflow Variables
-```
-> bash
+```bash
 airflow variables set SNOWFLAKE_ACCOUNT "your_account"
 airflow variables set SNOWFLAKE_USER "your_username"
 airflow variables set SNOWFLAKE_PASSWORD "your_password"
@@ -213,8 +207,7 @@ airflow variables set ALERT_EMAIL "your_email@gmail.com"
 ```
 
 ### 6. Configure Gmail SMTP in airflow.cfg
-```
-> ini
+```ini
 [smtp]
 smtp_host = smtp.gmail.com
 smtp_port = 465
@@ -227,15 +220,13 @@ smtp_mail_from = your_email@gmail.com
 
 ### 7. Create Snowflake database
 Run the following in a Snowflake worksheet:
-```
-> sql
+```sql
 CREATE DATABASE IF NOT EXISTS RETAIL_DW;
 CREATE SCHEMA IF NOT EXISTS RETAIL_DW.STAR;
 ```
 
 ### 8. Start Airflow and run the pipeline
-```
-> bash
+```bash
 airflow standalone
 ```
 Then visit `http://localhost:8080`, log in and trigger `retail_etl_pipeline`.
