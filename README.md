@@ -125,7 +125,7 @@ The pipeline runs daily at 06:00 UTC, with automatic retries on failure and emai
 ## DAG Configuration
 
 ```
-> python
+>python
 default_args = {
     "owner": "airflow",
     "retries": 2,
