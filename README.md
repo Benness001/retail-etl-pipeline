@@ -4,9 +4,9 @@ An automated end-to-end data pipeline that extracts retail user data from a REST
 
 ---
 
-##Project Architecture
+## Project Architecture
 
-![Architecture](screenshots/architecture.png)
+![architecture](screenshots/architecture.png)
 
 ---
 
